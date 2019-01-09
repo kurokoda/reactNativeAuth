@@ -1,6 +1,5 @@
 import firebase from "firebase";
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
 import { Button, Card, CardSection } from "../common";
 
 const LogoutForm = () => {
