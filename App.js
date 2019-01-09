@@ -5,6 +5,10 @@ import { Header } from './src/components/common';
 import LoginForm from './src/components/LoginForm'
 
 class App extends Component {
+  state = {
+    loggedIn: false
+  }
+
   componentWillMount(){
     firebase.initializeApp({
       apiKey: 'AIzaSyDGK6tAzNmT5UgNGzG0xEcRdZBcFf4RPOI',
@@ -13,6 +17,14 @@ class App extends Component {
       projectId: 'reactnativeauth-8e36c',
       storageBucket: 'reactnativeauth-8e36c.appspot.com',
       messagingSenderId: '311378830273'
+    });
+
+    firebase.auth().onAuthStateChanged((user)=>{
+      if(user){
+        this.setState({loggedIn: true})
+      } else {
+        this.setState({loggedIn: false})
+      }
     });
   }
 
