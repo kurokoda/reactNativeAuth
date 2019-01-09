@@ -1,12 +1,25 @@
 import React, {Component} from 'react';
 import { StyleSheet, View } from 'react-native';
 import firebase from 'firebase';
-import { Header } from './src/components/common';
+import { Header, Spinner } from './src/components/common';
 import LoginForm from './src/components/LoginForm'
+import LogoutForm from './src/components/LogoutForm'
+
 
 class App extends Component {
   state = {
-    loggedIn: false
+    loggedIn: null
+  };
+
+  renderLoginOrLogoutForm(){
+    switch (this.state.loggedIn) {
+      case true:
+        return <LogoutForm />;
+      case false:
+        return <LoginForm />;
+      default:
+        return <Spinner size="large"/>;
+    }
   }
 
   componentWillMount(){
@@ -30,9 +43,9 @@ class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.containerStyle}>
         <Header text='Authentication' />
-        <LoginForm />
+        {this.renderLoginOrLogoutForm()}
       </View>
     );
   }
@@ -40,4 +53,8 @@ class App extends Component {
 
 export default App
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  containerStyle: {
+    minHeight: 40
+  }
+});

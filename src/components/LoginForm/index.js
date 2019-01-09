@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import React, { Component } from "react";
-import { StyleSheet, Text, TextInput } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { Button, Card, CardSection, Input, Spinner } from "../common";
 
 class LoginForm extends Component {
