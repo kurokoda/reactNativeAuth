@@ -24,6 +24,9 @@ class LoginForm extends Component {
   }
 
   render () {
+
+    const { errorTextStyle } = styles;
+
     return (
         <Card>
           <CardSection>
@@ -45,7 +48,7 @@ class LoginForm extends Component {
             />
           </CardSection>
 
-          <Text>
+          <Text style={errorTextStyle}>
             {this.state.error}
           </Text>
 
@@ -62,7 +65,11 @@ class LoginForm extends Component {
 }
 
 const styles = StyleSheet.create({
-
+  errorTextStyle: {
+    fontSize: 20,
+    alignSelf: 'center',
+    color: 'red'
+  }
 });
 
 export default LoginForm;
